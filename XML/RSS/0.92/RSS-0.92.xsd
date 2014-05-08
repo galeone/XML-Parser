@@ -1,0 +1,171 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- tutti gli attributi o campo con minOccurs="0" e null'altro, significa che hanno cardinalità 0..1
+	dato che MaxOccurs=1 a default -->
+ 
+	<!-- dichiarazione dei campi formati da tipi elementari -->
+	<xs:element name="height" type="xs:positiveInteger" />
+	<xs:element name="width" type="xs:positiveInteger" />
+	<xs:element name="length" type="xs:positiveInteger" />
+	<xs:element name="url" type="xs:anyURI" />
+	<xs:element name="name" type="xs:string" />
+	<xs:element name="description" type="xs:string" />
+	<xs:element name="title" type="xs:string" />
+	<xs:element name="protocol" type="xs:string" />
+	<xs:element name="registerProcedure" type="xs:string" />
+	<xs:element name="path" type="xs:string" />
+	<xs:element name="port" type="xs:positiveInteger" />
+	<xs:element name="domain" type="xs:string" />
+	<xs:element name="hour" type="xs:positiveInteger" />
+	<xs:element name="day" type="xs:positiveInteger" />
+	<xs:element name="webMaster" type="xs:string" />
+	<xs:element name="managingEditor" type="xs:string" />
+	<xs:element name="docs" type="xs:string" />
+	<xs:element name="lastBuildDate" type="xs:date" />
+	<xs:element name="pubDate" type="xs:date" />
+	<xs:element name="copyright" type="xs:string" />
+	<xs:element name="rating" type="xs:positiveInteger" />
+	<xs:element name="link" type="xs:string" />
+	<xs:element name="language" type="xs:string" />
+	<xs:element name="type" type="xs:string" />
+	
+	<!-- dichiarazione di un tipo creato apposta per aggiungere
+		degli attributi ad un tipo  dato di tipo elementare (string)
+		Gli attributi NON possono fare riferimento a nulla di esterno  (ref non va)
+		Dato che sono figli di un dato non complesso
+	-->
+	
+	<xs:complexType name="enclosureT">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="url" type="xs:anyURI"  />
+				<xs:attribute name="length" type="xs:positiveInteger" />
+				<xs:attribute name="type" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:element name="enclosure" type="enclosureT" />
+	
+	<!-- come sopra -->
+	<xs:complexType name="sourceT">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="url" type="xs:anyURI" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:element name="source" type="sourceT" />
+	
+	<!-- come sopra -->
+	<xs:complexType name="categoryT">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="domain" type="xs:anyURI" use="optional" /> <!-- attributo opzionale -->
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:element name="category" type="categoryT" />
+	
+	<!-- come sopra -->
+	<xs:complexType name="cloudT">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="domain" type="xs:anyURI" />
+				<xs:attribute name="port" type="xs:positiveInteger" />
+				<xs:attribute name="path" type="xs:string" />
+				<xs:attribute name="registerProcedure" type="xs:string" />
+				<xs:attribute name="protocol" type="xs:string" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:element name="cloud" type="cloudT" />
+	
+	<!-- dichiarazione tipo di dato complesso -->
+	<!-- qui posso usare i ref -->
+	<xs:complexType name="skipTimeT">
+		<xs:sequence>
+			<xs:element ref="day" minOccurs="0" /> 
+			<xs:element ref="hour" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="skipHours" type="skipTimeT" />
+	<xs:element name="skipDays" type="skipTimeT" />
+	
+	<xs:complexType name="textInputT">
+		<xs:sequence>
+			<xs:element ref="title" minOccurs="0" />
+			<xs:element ref="description" minOccurs="0" />
+			<xs:element ref="name" minOccurs="0" />
+			<xs:element ref="link" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="textInput" type="textInputT" />
+	
+	<xs:complexType name="itemT">
+		<xs:sequence>
+			<xs:element ref="title" minOccurs="0" />
+			<xs:element ref="link" minOccurs="0" />
+			<xs:element ref="description" minOccurs="0" />
+			<xs:element ref="source" minOccurs="0" />
+			<xs:element ref="enclosure" minOccurs="0" />
+			<xs:element ref="category" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="item" type="itemT" />
+	
+	<xs:complexType name="imageT">
+		<xs:sequence>
+			<xs:element ref="title" />
+			<xs:element ref="url" />
+			<xs:element ref="link" />
+			<xs:element ref="width" minOccurs="0" />
+			<xs:element ref="height" minOccurs="0" />
+			<xs:element ref="description" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="image" type="imageT" />
+	
+	<xs:complexType name="channelT">
+		<xs:sequence>
+			<xs:element ref="title" />
+			<xs:element ref="link" />
+			<xs:element ref="description" />
+			<xs:element ref="lastBuildDate" minOccurs="0" />
+			<xs:element ref="docs" minOccurs="0" />
+			<xs:element ref="language" minOccurs="0" />
+			<xs:element ref="managingEditor" minOccurs="0" />
+			<xs:element ref="webMaster" minOccurs="0" />
+			<xs:element ref="cloud" minOccurs="0" />
+			<xs:element ref="item" maxOccurs="unbounded" />
+			<xs:element ref="rating" minOccurs="0" />
+			<xs:element ref="image" minOccurs="0" />
+			<xs:element ref="textInput" minOccurs="0" />
+			<xs:element ref="copyright" minOccurs="0" />
+			<xs:element ref="pubDate" minOccurs="0" />
+			<xs:element ref="skipHours" minOccurs="0" />
+			<xs:element ref="skipDays" minOccurs="0" />
+			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="channel" type="channelT" />
+	
+	<xs:complexType name="rssT">
+		<xs:sequence>
+			<xs:element ref="channel" />
+		</xs:sequence>
+		<xs:attribute name="version" use="required" type="xs:float" fixed="0.92" /> <!-- dichiarazione attributo fixed -->
+	</xs:complexType>
+	
+	<!-- dichiarazione del mega elemento che contiene tutti gli altri -->
+	<xs:element name="rss" type="rssT" />
+	
+ </xs:schema>

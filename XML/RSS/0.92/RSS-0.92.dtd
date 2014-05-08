@@ -1,0 +1,53 @@
+<!-- elements declaration creates a SEQUENCE (an order exists) -->
+<!ELEMENT rss (channel)>
+<!ATTLIST rss version CDATA #FIXED "0.92"> <!-- declare attribute -->
+
+<!ELEMENT channel (title, link, description, lastBuildDate*, docs*,
+language*, managingEditor*, webMaster*, cloud*, item+, rating*,
+image*, textInput*, copyright*, pubDate*, skipHours*, skipDays*)>
+ 
+<!ELEMENT image (title, url, link, width*, height*, description*)>
+<!ELEMENT item (title*, link*, description*, source*, enclosure*, category*)>
+ 
+<!ELEMENT source (#PCDATA)>
+<!ATTLIST source url CDATA #REQUIRED>
+
+<!ELEMENT category (#PCDATA)>		   
+<!ATTLIST category domain CDATA #IMPLIED>
+
+<!ELEMENT cloud (#PCDATA)>
+<!-- declare multiple attribute -->
+<!ATTLIST cloud domain CDATA #REQUIRED
+				port CDATA #REQUIRED
+				path CDATA #REQUIRED
+				registerProcedure CDATA #REQUIRED
+				protocol CDATA #REQUIRED>
+				
+<!ELEMENT enclosure (#PCDATA)>
+<!-- declare multiple attribute -->
+<!ATTLIST enclosure url CDATA #REQUIRED
+		   length CDATA #REQUIRED
+		   type CDATA #REQUIRED>
+
+<!ELEMENT skipDays (day+, hour+)>
+<!ELEMENT skipHours (day+, hour+)>
+
+<!ELEMENT textInput (title*, description*, name*, link*)>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT link (#PCDATA)>
+<!ELEMENT language (#PCDATA)>
+<!ELEMENT rating (#PCDATA)>
+<!ELEMENT copyright (#PCDATA)>
+<!ELEMENT pubDate (#PCDATA)>
+<!ELEMENT lastBuildDate (#PCDATA)>
+<!ELEMENT docs (#PCDATA)>
+<!ELEMENT managingEditor (#PCDATA)>
+<!ELEMENT webMaster (#PCDATA)>
+<!ELEMENT day (#PCDATA)>
+<!ELEMENT hour (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT width (#PCDATA)>
+<!ELEMENT height (#PCDATA)>
