@@ -27,7 +27,7 @@ public class Parser {
 			spf.setNamespaceAware(true); // support namespace
 			spf.setValidating(true);
 			spf.setFeature("http://apache.org/xml/features/validation/schema",true);
-			
+			spf.setFeature("http://apache.org/xml/features/dom/include-ignorable-whitespace", false);
 			SAXParser parser = null;
 			try {
 				parser = spf.newSAXParser();
@@ -45,6 +45,7 @@ public class Parser {
 			dbf.setValidating(true);
 			dbf.setNamespaceAware(true);
 			dbf.setFeature("http://apache.org/xml/features/validation/schema",true);
+			dbf.setFeature("http://apache.org/xml/features/dom/include-ignorable-whitespace", false);
 			try {
 				 DocumentBuilder builder = dbf.newDocumentBuilder();
                  File xmlFile = new File(args[1]);
