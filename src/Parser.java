@@ -33,7 +33,6 @@ public class Parser {
 			spf.setValidating(true);
 			// validate with xsd
 			spf.setFeature("http://apache.org/xml/features/validation/schema",true);
-			spf.setFeature("http://apache.org/xml/features/dom/include-ignorable-whitespace", false);
 			SAXParser parser = null;
 			try {
 				parser = spf.newSAXParser();
@@ -57,10 +56,7 @@ public class Parser {
 			dbf.setNamespaceAware(true);
 			// validate with xsd
 			dbf.setFeature("http://apache.org/xml/features/validation/schema",true);
-<<<<<<< HEAD
 			// skip whitespace
-=======
->>>>>>> 607e37b4492ba94118e779d0085d1bb7477b56e0
 			dbf.setFeature("http://apache.org/xml/features/dom/include-ignorable-whitespace", false);
 			try {
 				 DocumentBuilder builder = dbf.newDocumentBuilder();
