@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<AlbumFotografico  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="albumfotografici.xsd">  
+    
+    <Autore>
+    	<Nome>Carlo</Nome>
+    	<Cognome>Giannelli</Cognome>
+    </Autore>
+    
+    <Nome>Vacanze2011</Nome>
+    
+    <Inizio>2011-08-01</Inizio>
+    
+    <Fine>2011-08-31</Fine>
+	
+	<Foto>
+		<Luogo>
+			<Nome>Mare</Nome>
+			<Lat>21</Lat>
+			<Long>34</Long>
+		</Luogo>
+		<Data>2011-08-02</Data>
+		<Nome>D123</Nome>
+	</Foto>
+	
+	<Foto>
+		<Luogo>
+			<Nome>Bologna</Nome>
+			<Lat>43</Lat>
+			<Long>11</Long>
+		</Luogo>
+		<Data>2011-09-02</Data>
+		<Nome>D126</Nome>
+	</Foto>
+	
+	<Foto>
+		<Luogo>
+			<Nome>Mare</Nome>
+			<Lat>21</Lat>
+			<Long>34</Long>
+		</Luogo>
+		<Data>2011-08-07</Data>
+		<Nome>D124</Nome>
+	</Foto>
+	
+	<Foto>
+		<Luogo>
+			<Nome>Bologna</Nome>
+			<Lat>43</Lat>
+			<Long>11</Long>
+		</Luogo>
+		<Data>2011-07-31</Data>
+		<Nome>D34126</Nome>
+	</Foto>
+	
+</AlbumFotografico>

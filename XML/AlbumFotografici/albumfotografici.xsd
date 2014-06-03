@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Lat" type="xs:integer" />
+	<xs:element name="Long" type="xs:integer" />
+	
+	<xs:complexType name="luogoT">
+		<xs:sequence>
+			<xs:element name="Nome" type="xs:string" /> 
+			<xs:element ref="Lat" />
+			<xs:element ref="Long" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="fotoT">
+		<xs:sequence>
+			<xs:element name="Luogo" type="luogoT" />
+			<xs:element name="Data" type="xs:date" /> 
+			<xs:element name="Nome" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="autoreT">
+		<xs:sequence>
+			<xs:element name="Nome" type="xs:string" />
+			<xs:element name="Cognome" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="albumFotograficoT">
+		<xs:sequence>
+			<xs:element name="Autore" type="autoreT" />
+			<xs:element name="Nome" type="xs:string" />
+			<xs:element name="Inizio" type="xs:date" />
+			<xs:element name="Fine" type="xs:date" />
+			<xs:element name="Foto" type="fotoT" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="AlbumFotografico" type="albumFotograficoT" />
+	
+</xs:schema>

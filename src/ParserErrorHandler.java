@@ -1,3 +1,4 @@
+package it.unibo.tw;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -5,11 +6,11 @@ import org.xml.sax.helpers.*;
 
 import java.io.*;
 
-public class ParserEventHandler extends DefaultHandler implements ErrorHandler {
+public class ParserErrorHandler extends DefaultHandler implements ErrorHandler {
 	
 	private PrintStream out;
 	
-	public ParserEventHandler() {
+	public ParserErrorHandler() {
 		super();
 		out = new PrintStream(System.out);
 	}
