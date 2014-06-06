@@ -71,6 +71,42 @@ public class Parser {
 		
 		System.out.println("[+] " + fileName + " is valid");
 	}
+	
+	// Unused method, here only to show how to use DOMUtils.asList
+	private static float getGuadagnoFuturo(Document doc, String nomeReparto) {
+		float ret = 0;
+		for (Node n : DOMUtils.asList(doc.getElementsByTagName("Reparto"))) {
+			List<Node> repProp = DOMUtils.asList(n.getChildNodes());
+			for (int i=0;i<repProp.size();i++) {
+				Node child = repProp.get(i);
+				if (child.getNodeName().equals("Nome")
+						&& nomeReparto.equals(child.getTextContent())) {
+					// Itero lungo questo reparto per trovare i valori d'interesse
+					for(int k=0;k<repProp.size();++k) { // per ogni prodotto del reparto
+						if(repProp.get(k).getNodeName().equals("Prodotto")) {
+							float prezzo = 0;
+							int qta = 0;
+							for(Node sibling : DOMUtils.asList(repProp.get(k).getChildNodes())) {
+								System.out.println(sibling.getNodeName());
+								if (sibling.getNodeName().equals("Prezzo")) {
+									prezzo = Float.parseFloat(sibling.getTextContent());
+									System.out.println("Prezzo: " +prezzo);
+								} else if (sibling.getNodeName().equals("Giacenza")) {
+									qta = Integer.parseInt(sibling.getTextContent());
+									System.out.println("Quant: " + qta);
+								}
+								// avoid useless iteration
+								if (qta != 0 && prezzo != 0)
+									break;
+							}
+							ret += qta * prezzo;
+						}
+					}
+				}
+			}
+		}
+		return ret;
+	}
 
 }
 

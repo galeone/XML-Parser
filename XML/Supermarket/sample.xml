@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Supermercato  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="merce.xsd">  
+    <Reparto>
+    	<Nome>banane</Nome>
+    	<Prodotto>
+    		<Nome>buone</Nome>
+    		<Codice>f124aa</Codice>
+    		<Prezzo>33</Prezzo>
+    		<Giacenza>12</Giacenza>
+    	</Prodotto>
+        <Prodotto>
+    		<Nome>buone2</Nome>
+    		<Codice>f424aa</Codice>
+    		<Prezzo>3</Prezzo>
+    		<Giacenza>121</Giacenza>
+    	</Prodotto>
+    	    <Prodotto>
+    		<Nome>bu</Nome>
+    		<Codice>f1a</Codice>
+    		<Prezzo>22</Prezzo>
+    		<Giacenza>124</Giacenza>
+    	</Prodotto>
+    </Reparto>
+    
+    <Reparto>
+    	<Nome>testing</Nome>
+    	<Prodotto>
+    		<Nome>buone</Nome>
+    		<Codice>f124aa</Codice>
+    		<Prezzo>33</Prezzo>
+    		<Giacenza>12</Giacenza>
+    	</Prodotto>
+    </Reparto>
+    
+</Supermercato>

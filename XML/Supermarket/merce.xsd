@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:complexType name="prodottoT">
+		<xs:sequence>
+			<xs:element name="Nome" type="xs:string" />
+			<xs:element name="Codice" type="xs:string" />
+			<xs:element name="Prezzo" type="xs:positiveInteger" />
+			<xs:element name="Giacenza" type="xs:positiveInteger" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="repartoT">
+		<xs:sequence>
+			<xs:element name="Nome" type="xs:string" />
+			<xs:element name="Prodotto" type="prodottoT" minOccurs="0" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="supermercatoT">
+		<xs:sequence>
+			<xs:element name="Reparto" type="repartoT" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="Supermercato" type="supermercatoT" />
+	<xs:element name="Reparto" type="repartoT" />
+	<xs:element name="Prodotto" type="prodottoT" />
+	
+</xs:schema>
